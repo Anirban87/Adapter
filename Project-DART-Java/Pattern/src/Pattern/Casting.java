@@ -123,19 +123,20 @@ public class Casting
      
 	    // Chunking the array into blocks of size 5 each
 	
-	    double[] subarr1 = new double[5];
-	                           
+	    double[] subarr1 = new double[5];                        
 	    double[] subarr2 = new double[5];	 
 	    
 	    double rec;
     
 	    Correlation obj = new Correlation();
 	    
-	    int start = 0;
+	    int start = 2;
 	    int begin = 1;
 	    k=0;
+	    int count =0;
 	
         
+	    
 	    for(i=0;i<2;i++)				//iterate through columns
 	    {
 	    	if(begin ==1)
@@ -151,25 +152,33 @@ public class Casting
 	    	 
 	    	else
 	    	{   
+	    		for(int x = start; x<=rows ; x++ )
+	    		{
 	    		      System.out.println("");
-	    		      start=2;
 	    			  for(k=0;k<=5;k++)
 	    			  { 
 	    				  try{  
-	    					  subarr2[k] = arr[start][i-1];
+	    					 
+	    					  subarr2[k] = arr[x][i-1];
 	    					  System.out.println(subarr2[k]);
-	    					  start++;
-    				         }
+	    					  x++;	
+	    				  }
 	    				  catch(ArrayIndexOutOfBoundsException e)
 	    				  {
 	    					  System.out.print(" ");
 	    				  }
-	    			  }
-	    			  start= start -4;
-	    			  System.out.print(start);   	
+	    			      start= x-5;     
+	    			 }
+	    			  
+	    		}
 	    	}
-	        
-	    }
+	      
+	    } 
+	    
+	    
+	    
+	    
+	    
 	        System.out.println(" ");
 	        System.out.println(" ");
 	    	rec=obj.corr(subarr1, subarr2);
