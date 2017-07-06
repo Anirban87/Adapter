@@ -1,0 +1,16 @@
+package Adapter;
+
+import java.io.FileNotFoundException;
+
+public class Main {
+
+	public static void main(String[] args) throws FileNotFoundException
+	{
+		//creation of csv 
+		Create_CSV file = new Create_CSV();
+		file.Create_data();
+		file.Create_log();
+		
+		//pushing the csv into HDFS
+	}
+}

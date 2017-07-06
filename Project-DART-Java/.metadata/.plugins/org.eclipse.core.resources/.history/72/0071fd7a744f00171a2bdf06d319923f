@@ -1,0 +1,33 @@
+package bson_csv;
+
+import java.io.IOException;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException
+	{
+		//First Call to groupLog conversion class output: log.txt
+		Bson_txt_groupLog m1 = new Bson_txt_groupLog();
+		String file_log ="C:/Users/AM0C70368/Desktop/Adapter/lib/groupLog.bson";
+		m1.bsonDump(file_log);
+		
+		
+		//Second call to data conversion class output: data.txt
+		Bson_txt_data m2 = new Bson_txt_data();
+		String file_data ="C:/Users/AM0C70368/Desktop/Adapter/lib/data.bson";
+		m2.bsonDump(file_data);
+		
+		
+		//Third call to Trim to manipulate both text files and merge into one text file
+		//Merge m3 = new Merge();
+		
+		//Fourth class to Txt_Csv that takes the output of third class and converts into a csv file
+		Txt_Csv m4 = new Txt_Csv();
+		m4.Convert();
+		
+		//Fifth class Shift moves the csv file to hdfs 
+		Shift m5 = new Shift();
+		m5.Shift_hdfs();
+		
+	}
+}

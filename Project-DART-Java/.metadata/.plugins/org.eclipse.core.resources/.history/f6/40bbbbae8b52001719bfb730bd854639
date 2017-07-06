@@ -1,0 +1,44 @@
+package Adapter;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		    String csvFile = "C:/Users/AM0C70368/Desktop/output_data.csv";
+		    BufferedReader br = null;
+		    String line = "";
+		    String cvsSplitBy = ",";
+		    try 
+		    {
+		        br = new BufferedReader(new FileReader(csvFile));
+		        while ((line = br.readLine()) != null) {
+		        String[] csvRead = line.split(cvsSplitBy);
+		        System.out.println(csvRead[0].replace("\"","").replace("[","")+ ","+csvRead[1].replace("\"","")+ ","+csvRead[2].replace("\"","")+csvRead[3].replace("\"","") + "," + csvRead[4].replace("\"","")
+		        		+ ","+csvRead[5].replace("\"","")+ ","+csvRead[6].replace("\"","")+ ","+csvRead[7].replace("\"","")+ ","+csvRead[8].replace("\"","")+ ","+csvRead[9].replace("\"","")
+		        	    /*+ ","+csvRead[10].replace("\"","")+ ","+csvRead[11].replace("\"","")+ ","+csvRead[12].replace("\"","")+ ","+csvRead[13].replace("\"","")+ ","+csvRead[14].replace("\"","")
+		        		+ ","+csvRead[15].replace("\"","")+ ","+csvRead[16].replace("\"","")+ ","+csvRead[17].replace("\"","")+ ","+csvRead[18].replace("\"","")+ ","+csvRead[19].replace("\"","")+ ","+csvRead[1].replace("\"","")
+		        		+ ","+csvRead[20].replace("\"","")+ ","+csvRead[21].replace("\"","")+ ","+csvRead[22].replace("\"","")+ ","+csvRead[23].replace("\"","")+ ","+csvRead[24].replace("\"","")+ ","+csvRead[1].replace("\"","")
+		        		+ ","+csvRead[25].replace("\"","")+ ","+csvRead[26].replace("\"","")+ ","+csvRead[27].replace("\"","")+ ","+csvRead[28].replace("\"","")+ ","+csvRead[29].replace("\"","")+ ","+csvRead[1].replace("\"","")
+		        		+ ","+csvRead[30].replace("\"","")+ ","+csvRead[31].replace("\"","")+ ","+csvRead[32].replace("\"","")+ ","+csvRead[33].replace("\"","")+ ","+csvRead[34].replace("\"","")*/);
+		        }
+
+		    } catch (FileNotFoundException e) {
+		        e.printStackTrace();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    } finally {
+		        if (br != null) {
+		            try {
+		                br.close();
+		            } catch (IOException e) {
+		                e.printStackTrace();
+		            }
+		        }
+		    }
+		  }
+}

@@ -1,0 +1,28 @@
+package pattern;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test1 {
+
+	public static void main(String[] args) throws IOException
+	{
+		
+		BufferedReader in = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/output.txt"));
+		String str;
+
+		List<String> list = new ArrayList<String>();
+		while((str = in.readLine()) != null)
+		{
+		    list.add(str);
+		}
+
+		String[] stringArr = list.toArray(new String[0]);
+		in.close();
+	}
+	
+}
+

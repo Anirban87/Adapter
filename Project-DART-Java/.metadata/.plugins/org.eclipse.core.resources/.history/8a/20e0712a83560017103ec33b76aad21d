@@ -1,0 +1,35 @@
+package test;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class MongodbFind {
+
+	public static void main(String[] args) {
+
+		MongoClient client = new MongoClient("localhost", 27017);
+		MongoDatabase database = client.getDatabase("employee_db");
+		MongoCollection<Document> collection = database
+				.getCollection("employees");
+
+		List<Document> employees = (List<Document>) collection.find().into(
+				new ArrayList<Document>());
+
+		for (Document employee : employees) {
+
+			List<Document> courses = (List<Document>) employee.get("courses");
+			for (Document course : courses) {
+				System.out.println("name = " + employee.getString("name")
+						+ " course details below");
+				System.out.println("course name = " + course.getString("name"));
+				System.out.println("cours type = " + course.getString("type"));
+			}
+
+		}
+
+	}
+}

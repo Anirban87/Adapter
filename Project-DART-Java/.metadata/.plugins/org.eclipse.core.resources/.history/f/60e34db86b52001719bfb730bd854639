@@ -1,0 +1,51 @@
+package Adapter;
+
+import java.util.Scanner;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IOUtils;
+import java.io.*;
+import java.net.URI;
+import com.csvreader.CsvWriter;
+
+public class Convert_Push
+{
+		public void Convert() throws IOException
+		{
+			File file = new File("C:/Users/AM0C70368/Desktop/output_data.txt");  								//location to txt file 
+			java.util.Scanner ipfile = new Scanner(file);
+			CsvWriter opfile = new CsvWriter("C:/Users/AM0C70368/Desktop/output_data.csv");  					//location ot csv
+			
+			while (ipfile.hasNext())
+			{
+				String log = ipfile.nextLine();
+				System.out.println(log);
+				opfile.write(log);
+			
+			}
+			ipfile.close();
+			opfile.close();
+		}
+		
+		/*public void Push() throws IOException 
+		{
+			String localSrc = "   				";								//Source file in the local file system
+			String dst = "  				    ";								//Destination file in HDFS
+			
+			InputStream in = new BufferedInputStream(new FileInputStream(localSrc));	
+		
+			Configuration conf = new Configuration();									//Get configuration of Hadoop system
+			System.out.println("Connecting to -- "+conf.get("fs.defaultFS"));
+		
+			FileSystem fs = FileSystem.get(URI.create(dst), conf);						//Destination file in HDFS
+			OutputStream out = fs.create(new Path(dst));
+		
+			IOUtils.copyBytes(in, out, 4096, true);										//Copy file from local to HDFS
+			 
+			System.out.println(dst + " copied to HDFS");
+			
+		}*/
+}
+

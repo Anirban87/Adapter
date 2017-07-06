@@ -1,0 +1,25 @@
+package bson_csv;
+
+import java.util.Scanner;
+import java.io.*;
+import com.csvreader.CsvWriter;
+
+public class Conversion 
+{
+	public void Convert() throws IOException
+	{
+		File file = new File("C:/Users/AM0C70368/Desktop/ip_op/log.txt");
+		java.util.Scanner ipfile = new Scanner(file);
+		CsvWriter opfile = new CsvWriter("C:/Users/AM0C70368/Desktop/ip_oplog_1.csv");
+		
+		while (ipfile.hasNext())
+		{
+			String log = ipfile.nextLine();
+			System.out.println(log);
+			opfile.write(log);
+		
+		}
+		ipfile.close();
+		opfile.close();
+	}
+}

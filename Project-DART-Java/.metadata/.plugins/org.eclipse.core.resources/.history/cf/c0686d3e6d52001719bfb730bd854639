@@ -1,0 +1,99 @@
+package Adapter;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
+
+public class Test {
+	
+	public static void main(String[] args) throws FileNotFoundException
+	{
+	
+	PrintStream out_data = new PrintStream(new FileOutputStream("C:/Users/AM0C70368/Desktop/output_data.csv"));
+	PrintStream out_log = new PrintStream(new FileOutputStream("C:/Users/AM0C70368/Desktop/output_log.csv"));
+	
+	
+	//for data collection 
+	
+	    MongoClient mongoClient_data = new MongoClient();
+		
+	    DB db = mongoClient_data.getDB("mydb");
+	    System.out.println("Connect to database successfully");
+		DBCollection coll_data = db.getCollection("data");
+		      
+	    DBObject keys = new BasicDBObject();
+		keys.put("uidLog","");
+		keys.put("data", "");
+		
+		int count = 0;
+
+		DB mongoTemplate = null;
+		DBCursor List = coll.find(null, keys);
+		Map dataMap = new HashMap();
+		while(List.hasNext())
+		{
+			final DBObject result = List.next();
+			String uidLog = (String) result.get("uidLog");
+		
+			List dataList = new ArrayList();
+			dataList = (List) result.get("data");
+		
+			System.out.println(result.get("data"));
+			System.setOut(out);
+			count = count+1;
+		}
+		
+		System.out.println(count);
+		out.close();
+		
+		
+		// for groupLog collection
+		
+		  MongoClient mongoClient = new MongoClient();
+			
+	         // Now connect to your databases
+	         DB db = mongoClient.getDB( "mydb" );
+	         System.out.println("Connect to database successfully");
+	    	 DBCollection coll = db.getCollection("groupLog");
+			      
+	        DBObject keys = new BasicDBObject();
+	 		keys.put("uidLog","");
+	 		keys.put("curvInfoList.mnemonic", "");
+
+	 		
+			DBCursor log = coll.find(null, keys);
+	 		Map mnemonicMap = new HashMap();
+	 		
+	 		while(log.hasNext())
+	 		{
+
+	 			final DBObject result = log.next();
+	 			String uidLog = (String) result.get("uidLog");
+	 		
+	 			List menonmicList = new ArrayList();
+	 			menonmicList = (List) result.get("curvInfoList");
+	 			
+	 		
+	 			mnemonicMap.put(uidLog, menonmicList);
+	 			System.out.println(mnemonicMap);
+	 			
+	 		System.setOut(out);
+	 		
+	 		}
+	 		out.close();
+	}		
+	
+	
+	}
+}

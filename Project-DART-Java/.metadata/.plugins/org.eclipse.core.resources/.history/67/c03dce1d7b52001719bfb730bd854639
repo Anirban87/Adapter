@@ -1,0 +1,39 @@
+package Adapter;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		    String csvFile = "C:/Users/AM0C70368/Desktop/output_data.csv";
+		    BufferedReader br = null;
+		    String line = "";
+		    String cvsSplitBy = "~";
+		    try {
+		        br = new BufferedReader(new FileReader(csvFile));
+		        while ((line = br.readLine()) != null) {
+		            String[] csvRead = line.split(cvsSplitBy);
+		            System.out.println("Value [date= " + csvRead[5].replace("\"","") 
+		                                 + " , name=" + csvRead[9].replace("\"","")+"]");
+		        }
+
+		    } catch (FileNotFoundException e) {
+		        e.printStackTrace();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    } finally {
+		        if (br != null) {
+		            try {
+		                br.close();
+		            } catch (IOException e) {
+		                e.printStackTrace();
+		            }
+		        }
+		    }
+		    System.out.println("Done");
+		  }
+}
