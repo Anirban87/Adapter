@@ -10,6 +10,10 @@ import java.util.Scanner;
 public class Casting
 {
 
+	/**
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException
 	{
 		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
@@ -129,13 +133,12 @@ public class Casting
 	    double rec;
     
 	    Correlation obj = new Correlation();
-	    
+	
 	    int start = 2;
+	    int end = 6;
 	    int begin = 1;
 	    k=0;
-	    int count =0;
-	
-        
+	  
 	    
 	    for(i=0;i<2;i++)				//iterate through columns
 	    {
@@ -152,42 +155,33 @@ public class Casting
 	    	 
 	    	else
 	    	{   
-	    		for(int x = start; x<=rows ; x++ )
-	    		{
-	    		      System.out.println("");
-	    			  for(k=0;k<=5;k++)
-	    			  { 
-	    				  try{  
-	    					 
-	    					  subarr2[k] = arr[x][i-1];
-	    					  System.out.println(subarr2[k]);
-	    					  x++;	
-	    				  }
-	    				  catch(ArrayIndexOutOfBoundsException e)
-	    				  {
-	    					  System.out.print(" ");
-	    				  }
-	    			      start= x-5;     
-	    			 }
-	    			  
-	    		}
-	    	}
-	      
-	    } 
+	    		 while(end<rows)
+	    		 {
+	    			for(j=start;j<end;j++)
+	    			{
+	    				System.out.println("");
+	    				for(k=0;k<5;k++)
+	    				{
+	    					subarr2[k]=arr[j][i-1];
+	    					System.out.println(subarr2[k]);
+	    					j++;
+	    				}
+	    				end=j;
+	    				start = j-4;	
+	    			}
+	    			
+	    		 }
+	        }
+	    }
 	    
-	    
-	    
-	    
-	    
-	        System.out.println(" ");
-	        System.out.println(" ");
-	    	rec=obj.corr(subarr1, subarr2);
-	    	System.out.println("Correlation cofficient is : " +rec);
+	    rec=obj.corr(subarr1, subarr2);
+    	System.out.println("\nCorrelation cofficient is : " +rec);
 	    
    reader.close();
    scan.close();
   // list_Scan.close();
   }
 }
+
 
 
