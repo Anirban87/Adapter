@@ -1,11 +1,10 @@
 package Pattern;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,13 +12,9 @@ import java.util.Scanner;
 public class Casting
 {
 
-	/**
-	 * @param args
-	 * @throws IOException
-	 */
 	public static void main(String[] args) throws IOException
 	{
-		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("/home/onie/Desktop/Dart/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -28,7 +23,7 @@ public class Casting
 	
 		boolean header = true;
 	
-	    int lineCount = countLine.countLines("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
+	    int lineCount = countLine.countLines("/home/onie/Desktop/Dart/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
 		    
 	    Double[][] data = new Double[lineCount][200];
         
@@ -82,7 +77,7 @@ public class Casting
 		int mnemonics[] = new int[n];
 		for (i = 0; i < mnemonics.length; i++)
 		{   
-			System.out.print("Enter position of menmonic (e.g "+ sample+ ":"+ mnem_tokens[sample-1]+") : ");
+			System.out.print("Enter position of mnemonic (e.g "+ sample+ ":"+ mnem_tokens[sample-1]+") : ");
 			mnemonics[i] = scan.nextInt();
 		}
 
@@ -133,7 +128,7 @@ public class Casting
 	
 	    double[] subarr1 = new double[5];                        
 	    double[] subarr2 = new double[5];	 
-	   
+	    double[] save_mnemo = new double[3000];
 	    double rec;
     
 	    Correlation obj = new Correlation();
@@ -144,17 +139,15 @@ public class Casting
 	    k=0;
 	    
 	    int iter = 1;
-	  
-	    
 	    for(i=0;i<2;i++)				
 	    {
 	    	if(begin ==1)
 	    		
-	    	{   System.out.println(iter);
+	    	{  // System.out.println(iter);
 	       		for(j=1;j<=5;j++)           
 	    		{
 	    			subarr1[k]=arr[j][i];     
-	    			System.out.println(subarr1[k]);
+	    			//System.out.println(subarr1[k]);
 	    			k++;
 	    			iter =iter +1;
 	    		}
@@ -167,20 +160,21 @@ public class Casting
 	    		 {
 	    			for(j=start;j<end;j++)
 	    			{
-	    				System.out.println("");
-	    				System.out.println(iter);
+	    				//System.out.println("");
+	    			   // System.out.println(iter);
 	    				
 	    				for(k=0;k<5;k++)
 	    				{
 	    					subarr2[k]=arr[j][i-1];
-	    					System.out.println(subarr2[k]);
+	    					//System.out.println(subarr2[k]);
 	    				
 	    					j++;
 	    				}
 	    				iter =iter +1 ;
 	    				rec=obj.corr(subarr1, subarr2);
-	    				
-	    				System.out.println("\nCorrelation cofficient is : " +rec);
+	    				//System.out.print(start);
+	    				save_mnemo[start] = rec;
+	    				System.out.println("\n Correlation coefficient is for iteration  "+start+ " is : " +save_mnemo[start]);
 	    			    
 	    				end=j;
 	    				start = j-4;	
