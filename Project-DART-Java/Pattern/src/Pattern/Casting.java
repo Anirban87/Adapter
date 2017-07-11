@@ -108,13 +108,12 @@ public class Casting
 		int rows = arr.length;
 	    int cols = arr[0].length;
 
-	    //just to make sure   :p
-	    
-	    for(i=0;i<cols;i++)
+	  
+	  /* for(i=0;i<cols;i++)
 	    {
 	    	for(j=1;j<rows;j++)
 	    	{
-	    		//System.out.println(arr[j][i]);
+	    		System.out.println(arr[j][i]);
 	    	}
 			
 	    }
@@ -122,8 +121,8 @@ public class Casting
 	     
 	    System.out.println(rows + "  "+ cols);
 	    System.out.println(" "); 
-     
-	    // Chunking the array into blocks of size 5 each
+     */
+	    // Chunking the array into blocks of size 5 each---------------------------------------------------------------------------------
 	
 	    double[] subarr1 = new double[5];                        
 	    double[] subarr2 = new double[5];	 
@@ -131,6 +130,7 @@ public class Casting
 	    double rec;
     
 	    Correlation obj = new Correlation();
+	    Save_csv send = new Save_csv();
 	
 	    int start = 2;
 	    int end = 6;
@@ -159,29 +159,29 @@ public class Casting
 	    		 {
 	    			for(j=start;j<end;j++)
 	    			{
-	    				System.out.println("");
+	    				//System.out.println("");
 	    			   // System.out.println(iter);
 	    				
 	    				for(k=0;k<5;k++)
 	    				{
 	    					subarr2[k]=arr[j][i-1];
-	    					System.out.println(subarr2[k]);
+	    					//System.out.println(subarr2[k]);
 	    					j++;
 	    				}
 	    				iter =iter +1 ;
 	    				rec=obj.corr(subarr1, subarr2);
 	    				//System.out.print(start);
 	    				save_mnemo[start] = rec;
-	    				System.out.println("\n Correlation coefficient is for iteration  "+start+ " is : " +save_mnemo[start]);
-	    			    
-	    				end=j;
+	    				//System.out.println("\n Correlation coefficient is for iteration  "+start+ " is : " +save_mnemo[start]);
+	    			    end=j;
 	    				start = j-4;	
 	    			}
 	    			
 	    		 }
+	    		 send.save(save_mnemo);
+	    		 
 	        }
 	    }
-	    
 	  
 	    
    reader.close();
