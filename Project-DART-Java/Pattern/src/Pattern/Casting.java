@@ -1,7 +1,6 @@
 package Pattern;
 
 import java.io.BufferedReader;
-
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ public class Casting
 
 	public static void main(String[] args) throws IOException
 	{
-		BufferedReader reader = new BufferedReader(new FileReader("/home/onie/Desktop/Dart/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -23,7 +22,7 @@ public class Casting
 	
 		boolean header = true;
 	
-	    int lineCount = countLine.countLines("/home/onie/Desktop/Dart/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
+	    int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
 		    
 	    Double[][] data = new Double[lineCount][200];
         
@@ -147,7 +146,7 @@ public class Casting
 	       		for(j=1;j<=5;j++)           
 	    		{
 	    			subarr1[k]=arr[j][i];     
-	    			//System.out.println(subarr1[k]);
+	    			System.out.println(subarr1[k]);
 	    			k++;
 	    			iter =iter +1;
 	    		}
@@ -160,14 +159,13 @@ public class Casting
 	    		 {
 	    			for(j=start;j<end;j++)
 	    			{
-	    				//System.out.println("");
+	    				System.out.println("");
 	    			   // System.out.println(iter);
 	    				
 	    				for(k=0;k<5;k++)
 	    				{
 	    					subarr2[k]=arr[j][i-1];
-	    					//System.out.println(subarr2[k]);
-	    				
+	    					System.out.println(subarr2[k]);
 	    					j++;
 	    				}
 	    				iter =iter +1 ;
