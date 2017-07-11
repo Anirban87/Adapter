@@ -1,23 +1,26 @@
 package Pattern;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Save_csv {
 	
 	public void save(double[] arr) throws IOException 
 	{
-		String myfile = "C://Users/AM0C70368/Downloads/Project-DART-Java-master/Project-DART-Java/Pattern/src/Pattern/output.csv";
-		BufferedWriter br = new BufferedWriter(new FileWriter(myfile));
-		for (int j = 0; j < arr.length; j++) 
-		{
-		    char str = ((char) arr[j]);
-		    br.append("\n");
-		    br.write(str);
-		}
-		br.close();
-	
-	}
-	 
-}
+
+    java.io.File courseCSV = new java.io.File("C://Users/AM0C70368/Downloads/Project-DART-Java-master/Project-DART-Java/Pattern/src/Pattern/output.csv");
+
+    java.io.PrintWriter outfile = new java.io.PrintWriter(courseCSV);
+
+    for (int i=0; i < arr.length ; i++)
+    {
+        outfile.write((int) arr[i]);
+    }
+
+    outfile.close();
+	} 
+}	 
+
+
+
+
+    

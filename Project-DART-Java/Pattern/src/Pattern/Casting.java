@@ -118,7 +118,7 @@ public class Casting
 	    Correlation obj = new Correlation();
 	    Save_csv send = new Save_csv();
 	
-	    int start = 2;
+	    int start = 1;
 	    int end = 6;
 	    int begin = 1;
 	    k=0;

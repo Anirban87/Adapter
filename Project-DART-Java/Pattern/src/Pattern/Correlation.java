@@ -49,6 +49,7 @@ class Correlation
     	//String s = String.format("%.2f",r);
     	//r = Double.parseDouble(s);
     	//System.out.println("Total Numbers:"+n+"\nCorrelation Coefficient:"+r);
+   
 		return r;
     }
  }
