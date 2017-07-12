@@ -106,7 +106,7 @@ public class Casting
 		    }   
 	 
 		int rows = arr.length;
-	    int cols = arr[0].length;
+	   // int cols = arr[0].length;
 
 	    // Chunking the array into blocks of size 5 each---------------------------------------------------------------------------------
 	
@@ -119,22 +119,26 @@ public class Casting
 	    Save_csv send = new Save_csv();
 	
 	    int start = 1;
-	    int end = 6;
+	    int end = 5;
 	    int begin = 1;
 	    k=0;
-	    
 	    int iter = 1;
-	    for(i=0;i<2;i++)				
-	    {
+	    
+	   int count = 1;
+	    
+	   while(count <end -1 )
+	    {   
+	    	
 	    	if(begin ==1)
-	    		
-	    	{  // System.out.println(iter);
-	       		for(j=1;j<=5;j++)           
+	    	{ 
+	       		for(j=start;j<=end;j++)           			//modify the j with start and till end
 	    		{
-	    			subarr1[k]=arr[j][i];     
+	    			subarr1[k]=arr[j][i];
+	    			System.out.println(subarr1[k]);
 	    			k++;
 	    			iter =iter +1;
 	    		}
+	       		
 	       		begin++;
 	    	}
 	    	 
@@ -142,11 +146,14 @@ public class Casting
 	    	{   
 	    		 while(end<rows)
 	    		 {
-	    			for(j=start;j<end;j++)
+	    			
+	    	        System.out.println(" ");
+	    			for(j=start;j<=end;j++)
 	    			{
 	    				for(k=0;k<5;k++)
 	    				{
 	    					subarr2[k]=arr[j][i-1];
+	    					System.out.println(subarr2[k]);
 	    					j++;
 	    				}
 	    				iter =iter +1 ;
@@ -156,11 +163,12 @@ public class Casting
 	    			    end=j;
 	    				start = j-4;	
 	    			}
-	    			
 	    		 }
-	        }
+	    	 }
+	    	count++;
 	    }
-	      send.save(save_mnemo);
+	    
+   send.save(save_mnemo);
    reader.close();
    scan.close();
   // list_Scan.close();
