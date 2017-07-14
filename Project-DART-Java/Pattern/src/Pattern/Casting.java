@@ -133,6 +133,7 @@ public class Casting
 	    	{ 
 	       		for(j=start;j<=end;j++)           			//modify the j with start and till end
 	    		{
+	      
 	    			subarr1[k]=arr[j][i];
 	    			System.out.println(subarr1[k]);
 	    			k++;
@@ -152,9 +153,12 @@ public class Casting
 	    			{
 	    				for(k=0;k<5;k++)
 	    				{
+	    				
 	    					subarr2[k]=arr[j][i-1];
 	    					System.out.println(subarr2[k]);
 	    					j++;
+	    				
+		       		
 	    				}
 	    				iter =iter +1 ;
 	    				rec=obj.corr(subarr1, subarr2);

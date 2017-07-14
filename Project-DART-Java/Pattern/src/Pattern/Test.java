@@ -105,78 +105,59 @@ public class Test
 		    }   
 	 
 		int rows = arr.length;
-	   // int cols = arr[0].length;
+	  
 
 	    // Chunking the array into blocks of size 5 each---------------------------------------------------------------------------------
 	
-	    double[] subarr1 = new double[5];                        
-	    double[] subarr2 = new double[5];	 
-	    double[] save_mnemo = new double[3000];
-	    double rec;
-	    double[][] save = new double[3000][3000] ;
-	    
-	    Correlation obj = new Correlation();
-	    Save_csv send = new Save_csv();
-	
-	
-	   
-	    int iter = 0;
+	  double[] subarr1 = new double[5];
+	  double[] subarr2 = new double[5];
+	  Correlation obj = new Correlation();
+	  double rec; 
+	  double[] save_mnemo = new double[30];
+	  
+	  int start = 1;
+	  int end = 5;
+	 
+	  k=0;
+	  
+	  for(i = start ; i<=end ;i++)
+	  {
+	     	 subarr1[k] = arr[i][0];
+			  //System.out.println(subarr1[k]);
+			  k++;
+			
+	  }
+	  start++;
+	  end++;
+	 
+	  while(end<rows)
+	  {
+		  System.out.println("");
+		  k=0;
+		  for(j= start; j<=end ;j++)
+		  {
+			 	  subarr2[k] = arr[j][0];
+				  //System.out.println(subarr2[k]);
+				  k++;		
+		  }
+		  
+		  rec=obj.corr(subarr1, subarr2);
+		  save_mnemo[start] = rec;
+		  System.out.println(save_mnemo[start]);
 
-	       k=0;
-		   int start_ini = 1;  
-		   int end_ini =5 ;
-		   int start_rec= 0;
-		   int end_rec = 0;
-		   
-	while(end_ini < rows)
-	{
-		  for(i=start_ini; i<=end_ini; i++)
-		  {
-			  try{
-				  subarr1[k] = arr[i][0];
-				  System.out.println(subarr1[k]);
-				  k++;  
-			  }
-			  catch(ArrayIndexOutOfBoundsException e)
-			  {
-				  System.out.println(" ");
-			  }
-		  }
+		  start++;
+		  end++;
+	  }  
 		  
-		  start_ini++;
-		  end_ini++;
-		  start_rec = start_ini;
-		  end_rec = end_ini;
-		  iter = 0;
+	  for(i=0;i<save_mnemo.length;i++)
+	  {
 		  
-		  while(end_rec <rows)
-		  {
-			  k =0 ;
-			  System.out.println(" ");
-			  for(j= start_rec; j<=end_rec; j++)
-			  {
-				  subarr2[k] = arr[j][0];
-				  System.out.println(subarr2[k]);
-				  k++;
-			  }
+	  }
+		  
 			  
-			  rec = obj.corr(subarr1, subarr2);
-			  
-			  start_rec++;
-			  end_rec++;
-			  iter = iter +1 ;
-			 System.out.println(iter); 
-		  }
-		  
-		  start_ini = start_rec - (iter+1); 
-		  System.out.println(start_ini);
-		  end_ini = end_rec - (iter+1);
-		  System.out.println(end_ini);
-	}
-   
-	
+
 	reader.close();
-   scan.close();  
+    scan.close();  
 	    
   // send.save(save_mnemo);
   
