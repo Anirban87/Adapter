@@ -13,7 +13,12 @@ class Correlation
     	xx =new double[5];
     	xy =new double[5];
     	yy =new double[5];
-
+        
+    	double inf = Double.POSITIVE_INFINITY;
+    	double pos_inf = inf + 5;
+    	double nan = inf - inf; // same as Double.NaN
+    	double neg_inf = inf * -1;
+    	
        //initialise the two array from arguments
     	double x[]= input_x;
     	double y[]= input_y;
@@ -49,7 +54,24 @@ class Correlation
     	//String s = String.format("%.2f",r);
     	//r = Double.parseDouble(s);
     	//System.out.println("Total Numbers:"+n+"\nCorrelation Coefficient:"+r);
-   
-		return r;
+        if(r == pos_inf)
+        {	
+        	r=0;
+        	return r;
+        }
+        else if(r == nan)
+        {	
+        	r=0;
+        	return r;
+        }
+        else if(r == neg_inf)
+        {
+        	r=0;
+        	return r;
+        }
+        else 
+        {
+        	return r;
+        }
     }
  }

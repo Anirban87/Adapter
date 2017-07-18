@@ -17,7 +17,7 @@ public class CSVWritterExample
         {
             for (int j = 0; j < 5; j++)
             {
-                data[i][j] = j * i;
+                data[i][j] = 1;
             }
         }
 
