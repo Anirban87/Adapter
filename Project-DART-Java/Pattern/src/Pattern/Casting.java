@@ -107,8 +107,10 @@ public class Casting
 		int rows = arr.length;
 	  
 
-	    // Chunking the array into blocks of size 5 each---------------------------------------------------------------------------------
+	    // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
 	
+		
+		
 	  double[] subarr1 = new double[5];
 	  double[] subarr2 = new double[5];
 	  Correlation obj = new Correlation();
