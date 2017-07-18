@@ -119,24 +119,21 @@ public class Test
 	  int start = 1;
 	  int end = 5;
 	 
-	  k=0;
+	  
      
 	  int count = 1 ;
 
 	  while(count <13)
-	  {
-		   System.out.println(" ");
+	  {    
+		   k=0;
+		   System.out.println("***********************");
 	  		for(i = start ; i<=end ;i++)
 	  		{
-	  				try{
+	  			
 	  					subarr1[k] = arr[i][0];
 	  					System.out.println(subarr1[k]);
 	  					k++;
-	  					}
-	  				catch(ArrayIndexOutOfBoundsException e)
-	  				{
-	  					System.out.println("error");
-	  				}
+	  			
 	  		}
 	  		start++;
 	  		end++;
