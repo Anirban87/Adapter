@@ -5,7 +5,7 @@
 	import java.util.*;
 	import java.lang.*;
 
-	class test1
+	class test_corre
 	{
 	      public static void main(String[] args)       //passing the two arrays
 	      {

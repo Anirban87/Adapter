@@ -13,7 +13,7 @@ public class Casting
 
 	public static void main(String[] args) throws IOException
 	{
-		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -22,7 +22,7 @@ public class Casting
 	
 		boolean header = true;
 	
-	    int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
+	    int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv");
 		    
 	    Double[][] data = new Double[lineCount][200];
         
@@ -96,7 +96,6 @@ public class Casting
 		    				{
 		    					arr[i][k] = data[i][j];  //Separating the array for correlation from initial 2d array
 		    				}
-		    	
 			         }
 		    		
 			    	k++;
@@ -106,75 +105,75 @@ public class Casting
 		    }   
 	 
 		int rows = arr.length;
-	   // int cols = arr[0].length;
+	  
 
 	    // Chunking the array into blocks of size 5 each---------------------------------------------------------------------------------
 	
-	    double[] subarr1 = new double[5];                        
-	    double[] subarr2 = new double[5];	 
-	    double[] save_mnemo = new double[3000];
-	    double rec;
-    
-	    Correlation obj = new Correlation();
-	    Save_csv send = new Save_csv();
-	
-	    int start = 1;
-	    int end = 5;
-	    int begin = 1;
-	    k=0;
-	    int iter = 1;
+	  double[] subarr1 = new double[5];
+	  double[] subarr2 = new double[5];
+	  Correlation obj = new Correlation();
+	  double rec; 
+	  double[] save_mnemo = new double[30];
+	  int iter = 0;
+	  
+	  int start = 1;
+	  int end = 5;
+	 
+	  
+     
+	  int count = 1 ;
+
+	  while(count <13)
+	  {    
+		   k=0;
+		   System.out.println("***********************");
+	  		for(i = start ; i<=end ;i++)
+	  		{
+	  			
+	  					subarr1[k] = arr[i][0];
+	  				//	System.out.println(subarr1[k]);
+	  					k++;
+	  			
+	  		}
+	  		start++;
+	  		end++;
+	  		iter = 0;
+	  		
+	  		while(end<rows)
+	  		{
+	  			
+	  			k=0;
+	  			for(j= start; j<=end ;j++)
+	  			{
+	  					subarr2[k] = arr[j][0];
+	  					//System.out.println(subarr2[k]);
+	  					k++;		
+	  			}
+		  
+	  			rec=obj.corr(subarr1, subarr2);
+	  			save_mnemo[start] = rec;
+	  			System.out.println(save_mnemo[start]);
+	  			iter = iter + 1;
+	  			start++;
+	  			end++;
+	  		
+			}  
+	  		
+	  		 
+	  		start = start - iter; 
+			end = end - iter;
+	  	//	System.out.println(start+" "+end);
+	  	    count++;
+	  		
+	  }
+		  
+			  
+
+	reader.close();
+    scan.close();  
 	    
-	   int count = 1;
-	    
-	   while(count <end -1 )
-	    {   
-	    	
-	    	if(begin ==1)
-	    	{ 
-	       		for(j=start;j<=end;j++)           			//modify the j with start and till end
-	    		{
-	      
-	    			subarr1[k]=arr[j][i];
-	    			System.out.println(subarr1[k]);
-	    			k++;
-	    			iter =iter +1;
-	    		}
-	       		
-	       		begin++;
-	    	}
-	    	 
-	    	else
-	    	{   
-	    		 while(end<rows)
-	    		 {
-	    			
-	    	        System.out.println(" ");
-	    			for(j=start;j<=end;j++)
-	    			{
-	    				for(k=0;k<5;k++)
-	    				{
-	    				
-	    					subarr2[k]=arr[j][i-1];
-	    					System.out.println(subarr2[k]);
-	    					j++;
-	    				
-		       		
-	    				}
-	    				iter =iter +1 ;
-	    				rec=obj.corr(subarr1, subarr2);
-	    				save_mnemo[start] = rec;
-	    				System.out.println("\n Correlation coefficient is for iteration  "+start+ " is : " +save_mnemo[start]);
-	    			    end=j;
-	    				start = j-4;	
-	    			}
-	    		 }
-	    	 }
-	    	count++;
-	    }
-	    
-   send.save(save_mnemo);
-   reader.close();
-   scan.close();
+  // send.save(save_mnemo);
+  
   // list_Scan.close();
   }
 }
