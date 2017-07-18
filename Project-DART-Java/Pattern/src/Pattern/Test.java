@@ -114,44 +114,60 @@ public class Test
 	  Correlation obj = new Correlation();
 	  double rec; 
 	  double[] save_mnemo = new double[30];
+	  int iter = 0;
 	  
 	  int start = 1;
 	  int end = 5;
 	 
 	  k=0;
-	  
-	  for(i = start ; i<=end ;i++)
-	  {
-	     	 subarr1[k] = arr[i][0];
-			  //System.out.println(subarr1[k]);
-			  k++;
-			
-	  }
-	  start++;
-	  end++;
-	 
-	  while(end<rows)
-	  {
-		  System.out.println("");
-		  k=0;
-		  for(j= start; j<=end ;j++)
-		  {
-			 	  subarr2[k] = arr[j][0];
-				  //System.out.println(subarr2[k]);
-				  k++;		
-		  }
-		  
-		  rec=obj.corr(subarr1, subarr2);
-		  save_mnemo[start] = rec;
-		  System.out.println(save_mnemo[start]);
+     
+	  int count = 1 ;
 
-		  start++;
-		  end++;
-	  }  
-		  
-	  for(i=0;i<save_mnemo.length;i++)
+	  while(count <13)
 	  {
+		   System.out.println(" ");
+	  		for(i = start ; i<=end ;i++)
+	  		{
+	  				try{
+	  					subarr1[k] = arr[i][0];
+	  					System.out.println(subarr1[k]);
+	  					k++;
+	  					}
+	  				catch(ArrayIndexOutOfBoundsException e)
+	  				{
+	  					System.out.println("error");
+	  				}
+	  		}
+	  		start++;
+	  		end++;
+	  		iter = 0;
+	  		
+	  		while(end<rows)
+	  		{
+	  			System.out.println("");
+	  			k=0;
+	  			for(j= start; j<=end ;j++)
+	  			{
+	  					subarr2[k] = arr[j][0];
+	  					System.out.println(subarr2[k]);
+	  					k++;		
+	  			}
 		  
+	  			rec=obj.corr(subarr1, subarr2);
+	  			save_mnemo[start] = rec;
+	  			//System.out.println(save_mnemo[start]);
+	  			iter = iter + 1;
+	  			start++;
+	  			end++;
+	  		
+			}  
+	  		
+	  		 
+	  		start = start - iter; 
+			end = end - iter;
+	  	//	System.out.println(start+" "+end);
+	  	    count++;
+	  		
 	  }
 		  
 			  
