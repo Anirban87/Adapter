@@ -13,7 +13,7 @@ public class Casting
 
 	public static void main(String[] args) throws IOException
 	{
-		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_MudLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -22,7 +22,7 @@ public class Casting
 	
 		boolean header = true;
 	
-	    int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv");
+	    int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_MudLog.csv");
 		    
 	    Double[][] data = new Double[lineCount][200];
         
@@ -115,27 +115,22 @@ public class Casting
 	  double[] subarr2 = new double[5];
 	  Correlation obj = new Correlation();
 	  double rec; 
-	  double[] save_mnemo = new double[30];
+	  double[] save_mnemo = new double[3000];
 	  int iter = 0;
 	  
 	  int start = 1;
 	  int end = 5;
-	 
-	  
-     
+ 
 	  int count = 1 ;
 
-	  while(count <13)
+	  while(count < rows -5)
 	  {    
-		   k=0;
-		   System.out.println("***********************");
+		    k=0;
+		    System.out.println("*************************************");
 	  		for(i = start ; i<=end ;i++)
 	  		{
-	  			
 	  					subarr1[k] = arr[i][0];
-	  				//	System.out.println(subarr1[k]);
 	  					k++;
-	  			
 	  		}
 	  		start++;
 	  		end++;
@@ -148,7 +143,6 @@ public class Casting
 	  			for(j= start; j<=end ;j++)
 	  			{
 	  					subarr2[k] = arr[j][0];
-	  					//System.out.println(subarr2[k]);
 	  					k++;		
 	  			}
 		  
@@ -160,23 +154,15 @@ public class Casting
 	  			end++;
 	  		
 			}  
-	  		
-	  		 
+	 
 	  		start = start - iter; 
 			end = end - iter;
-	  	//	System.out.println(start+" "+end);
 	  	    count++;
-	  		
 	  }
-		  
-			  
 
 	reader.close();
     scan.close();  
-	    
-  // send.save(save_mnemo);
-  
-  // list_Scan.close();
+
   }
 }
 

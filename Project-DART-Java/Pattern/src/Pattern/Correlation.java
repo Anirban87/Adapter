@@ -8,17 +8,13 @@ class Correlation
 {
       public double corr(double[] input_x, double[] input_y)       //passing the two arrays
       {
-    	double r,nr=0,dr_1=0,dr_2=0,dr_3=0,dr=0;
+    	double nr=0,dr_1=0,dr_2=0,dr_3=0,dr=0;
+    	double r;
     	double xx[],xy[],yy[];
     	xx =new double[5];
     	xy =new double[5];
     	yy =new double[5];
         
-    	double inf = Double.POSITIVE_INFINITY;
-    	double pos_inf = inf + 5;
-    	double nan = inf - inf; // same as Double.NaN
-    	double neg_inf = inf * -1;
-    	
        //initialise the two array from arguments
     	double x[]= input_x;
     	double y[]= input_y;
@@ -54,21 +50,11 @@ class Correlation
     	//String s = String.format("%.2f",r);
     	//r = Double.parseDouble(s);
     	//System.out.println("Total Numbers:"+n+"\nCorrelation Coefficient:"+r);
-        if(r == pos_inf)
-        {	
-        	r=0;
-        	return r;
-        }
-        else if(r == nan)
-        {	
-        	r=0;
-        	return r;
-        }
-        else if(r == neg_inf)
+        if(r>1.0 || r<-1.0)
         {
-        	r=0;
-        	return r;
+        	return 0;
         }
+  
         else 
         {
         	return r;
