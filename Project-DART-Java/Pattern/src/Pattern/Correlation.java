@@ -47,9 +47,7 @@ class Correlation
     	dr_3=dr_1*dr_2;
     	dr=Math.sqrt(dr_3);
     	r=(nr/dr);
-    	//String s = String.format("%.2f",r);
-    	//r = Double.parseDouble(s);
-    	//System.out.println("Total Numbers:"+n+"\nCorrelation Coefficient:"+r);
+
         if(r>1.0 || r<-1.0)
         {
         	return 0;

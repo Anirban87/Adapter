@@ -13,7 +13,7 @@ public class Casting
 
 	public static void main(String[] args) throws IOException
 	{
-		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_MudLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -22,7 +22,7 @@ public class Casting
 	
 		boolean header = true;
 	
-	    int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_MudLog.csv");
+	    int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
 		    
 	    Double[][] data = new Double[lineCount][200];
         
