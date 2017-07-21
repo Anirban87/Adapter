@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Casting
+public class test
 {
 
 	public static void main(String[] args) throws IOException
@@ -106,7 +106,7 @@ public class Casting
 
 	    // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
 	
-		
+	  ArrayList<double[]>  list_save = new ArrayList<double[]>();
 		
 	  double[] subarr1 = new double[5];
 	  double[] subarr2 = new double[5];
@@ -146,6 +146,7 @@ public class Casting
 	  			rec=obj.corr(subarr1, subarr2);
 	  			save_mnemo[start] = rec;
 	  			System.out.println(save_mnemo[start]);
+	  			list_save.add(save_mnemo);
 	  			iter = iter + 1;
 	  			start++;
 	  			end++;
