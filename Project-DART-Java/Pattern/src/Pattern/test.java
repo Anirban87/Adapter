@@ -12,7 +12,7 @@ public class test
 
 	public static void main(String[] args) throws IOException
 	{
-		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -20,7 +20,7 @@ public class test
 		
 	
 		boolean header = true;
-		int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
+		int lineCount = countLine.countLines("C://Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_depthLog.csv");
 	    Double[][] data = new Double[lineCount][200];
         
     	int i = 0;
@@ -105,14 +105,15 @@ public class test
 	  
 
 	    // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
-	
-	  ArrayList<double[]>  list_save = new ArrayList<double[]>();
-		
+	  
+		int x=0,y=0;
+	  double[][] save = new double[12][12];
+	 
 	  double[] subarr1 = new double[5];
 	  double[] subarr2 = new double[5];
 	  Correlation obj = new Correlation();
 	  double rec; 
-	  double[] save_mnemo = new double[3000];
+	  //double[] save_mnemo = new double[3000];j
 	  int iter = 0;
 	  
 	  int start = 1;
@@ -123,7 +124,7 @@ public class test
 	  while(count < rows -5)
 	  {    
 		    k=0;
-		    System.out.println("*************************************");
+		   // System.out.println("*************************************");
 	  		for(i = start ; i<=end ;i++)
 	  		{
 	  					subarr1[k] = arr[i][0];
@@ -133,6 +134,7 @@ public class test
 	  		end++;
 	  		iter = 0;
 	  		
+	  		//System.out.println(y);
 	  		while(end<rows)
 	  		{
 	  			
@@ -144,20 +146,31 @@ public class test
 	  			}
 		  
 	  			rec=obj.corr(subarr1, subarr2);
-	  			save_mnemo[start] = rec;
-	  			System.out.println(save_mnemo[start]);
-	  			list_save.add(save_mnemo);
+	  			
+	  			//save_mnemo[start] = rec;
+	  			//System.out.println(save_mnemo[start]);
+	  			save[x][y]=rec;
+	  			//System.out.println(save[x][y]);
+	  			x++;
 	  			iter = iter + 1;
 	  			start++;
 	  			end++;
 	  		
 			}  
-	 
+	  		
+	        x = x-iter; 
 	  		start = start - iter; 
 			end = end - iter;
 	  	    count++;
+	  	    y++;
+	  	   
+	
 	  }
-
+	 
+	  System.out.println(save[][]);
+	
+	 
+		
 	reader.close();
     scan.close();  
 
