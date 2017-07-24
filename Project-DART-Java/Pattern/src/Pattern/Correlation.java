@@ -1,9 +1,5 @@
 package Pattern;
 
-
-import java.util.*;
-import java.lang.*;
-
 class Correlation
 {
       public double corr(double[] input_x, double[] input_y)       //passing the two arrays

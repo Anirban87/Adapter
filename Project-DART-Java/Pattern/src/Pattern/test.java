@@ -1,7 +1,9 @@
 package Pattern;
 
 import java.io.BufferedReader;
+import au.com.bytecode.opencsv.CSVWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +14,15 @@ public class test
 
 	public static void main(String[] args) throws IOException
 	{
+		
+		 java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
+		 java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
+		
 		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/ROP.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
-		String[] mnem_tokens =null;     //store the mnemonics in form of an 1D array 
+		String[] mnem_tokens = null;     //store the mnemonics in form of an 1D array 
 		
 	
 		boolean header = true;
@@ -64,7 +70,7 @@ public class test
 	    // Generate Two Dimensional Array of Data Values from the CSV -- End----------------------------------------------------------------------------------------
 
 		
-        int sample = 4;
+        //int sample = 4;
 	    Scanner scan = new Scanner(System.in);
 	    System.out.println("");
 		System.out.print("Enter how many mneomics are to be selected (Except TIME)  : ");
@@ -102,12 +108,11 @@ public class test
 		    }   
 	 
 		int rows = arr.length;
-	  
 
 	    // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
 	  
 	  int x=0,y=0;
-	  double[][] save = new double[1500][1500];
+	  double[][] save = new double[rows][rows];
 	 
 	  double[] subarr1 = new double[5];
 	  double[] subarr2 = new double[5];
@@ -159,13 +164,12 @@ public class test
 	  	    count++;
 	  	    y++;
 	  	   
-	
 	  }
-	  
-	  for(j= 0; j<1500 ;j++)
+	 
+	  for(j= 0; j<rows -5 ;j++)
 	  { 
-		  System.out.println("");
-		  for(i=0; i<1500 ;i++)
+		  System.out.println("*******************************************");
+		  for(i=0; i<rows ;i++)
 		  {
 			  if(save[i][j] == 0)
 			  {
@@ -176,11 +180,13 @@ public class test
 				  System.out.println(save[i][j]);
 			  }
 		  }
+		 // outfile.write(save[i][j].toCSVString());
 	  }
 	 
 		
 	reader.close();
     scan.close();  
+    
 
   }
 }
