@@ -18,7 +18,7 @@ public class test
 		 java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
 		 java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
 		
-		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/ROP.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -26,7 +26,7 @@ public class test
 		
 	
 		boolean header = true;
-		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/ROP.csv");
+		int lineCount = countLine.countLines("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv");
 	    Double[][] data = new Double[lineCount][200];
         
     	int i = 0;
@@ -150,8 +150,15 @@ public class test
 	  			}
 		  
 	  			rec=obj.corr(subarr1, subarr2);
-	  			save[x][y]=rec;
-	  			x++;
+	  			if(x == )
+	  			{
+	  				save[x][y] = 1;
+	  			}
+	  			else
+	  			{	
+	  				save[x][y]=rec;
+	  			}
+	 			x++;
 	  			iter = iter + 1;
 	  			start++;
 	  			end++;
@@ -166,23 +173,16 @@ public class test
 	  	   
 	  }
 	 
-	  for(j= 0; j<rows -5 ;j++)
+	  for(j= 0; j<rows-5 ;j++)
 	  { 
 		  System.out.println("*******************************************");
-		  for(i=0; i<rows ;i++)
+		  for(i=0; i<rows-5 ;i++)
 		  {
-			  if(save[i][j] == 0)
-			  {
-				continue;  
-			  }
-			  else
-			  {
-				  System.out.println(save[i][j]);
-			  }
+			 System.out.println(save[i][j]);
+			
 		  }
-		 // outfile.write(save[i][j].toCSVString());
+		  
 	  }
-	 
 		
 	reader.close();
     scan.close();  
