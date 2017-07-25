@@ -109,11 +109,12 @@ public class test
 		    }   
 	 
 		int rows = arr.length;
+		
 
  // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
 	  
 	  int x=0,y=0;
-	  double[][] save = new double[rows][rows];
+	  double[][] save = new double[rows-5][rows-5];
 	  double[] subarr1 = new double[5];
 	  double[] subarr2 = new double[5];
 	  Correlation obj = new Correlation();
@@ -168,24 +169,25 @@ public class test
 	  
 	// arranging the 2d array in the lower diagonal--------------------------------------------------------------------------------
 	 
-	 // System.out.println(save[5][0]);
-	  
-	  
+	 
 	  double temp;
 	 
-	  for(i=0 ; i < 1 ; i++)
+	  for(i=0 ; i < 13 ; i++)
 	  {
+		  System.out.println("  ");
+
 		  for(j=0 ; j<13 ; j++)
 		  {
-			  if(save[j][i] == 0)
+			  
+			 /* if(save[j][i] == 0)
 			  {
 				
 				  count = j;
 				  while(count > 0)
 				  {
 					  temp = save[count][i];
-					  save[j-1][i] = save [j][i];
-					  save[j][i] = temp;
+					  save[count-1][i] = save [count][i];
+					  save[count][i] = temp;
 					  
 					  count--;
 					  
@@ -193,19 +195,19 @@ public class test
 				  
 			  }
 			  else
-			  {
-				continue;
-			  }
+			  {*/
+				System.out.println(save[j][i]);
+			  //}
 		  }
 	  }
 	  
-	  for(i=0 ; i < 1 ; i++)
+	 /* for(i=0 ; i < 1 ; i++)
 	  {
 		  for(j=0 ; j<13 ; j++)
 		  {
-			System.out.println(save[j][i]);
+			
 		  }
-	  }
+	  }*/
 		
 	reader.close();
     scan.close();  
