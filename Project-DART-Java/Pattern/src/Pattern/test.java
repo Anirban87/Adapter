@@ -1,6 +1,7 @@
 package Pattern;
 
 import java.io.BufferedReader;
+
 import au.com.bytecode.opencsv.CSVWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,7 +17,7 @@ public class test
 	{
 		
 		 java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
-		 java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
+		java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
 		
 		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
 		String line = null;
@@ -109,11 +110,10 @@ public class test
 	 
 		int rows = arr.length;
 
-	    // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
+ // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
 	  
 	  int x=0,y=0;
 	  double[][] save = new double[rows][rows];
-	 
 	  double[] subarr1 = new double[5];
 	  double[] subarr2 = new double[5];
 	  Correlation obj = new Correlation();
@@ -150,14 +150,7 @@ public class test
 	  			}
 		  
 	  			rec=obj.corr(subarr1, subarr2);
-	  			if(x == )
-	  			{
-	  				save[x][y] = 1;
-	  			}
-	  			else
-	  			{	
-	  				save[x][y]=rec;
-	  			}
+	  			save[x][y]=rec;
 	 			x++;
 	  			iter = iter + 1;
 	  			start++;
@@ -172,16 +165,46 @@ public class test
 	  	    y++;
 	  	   
 	  }
+	  
+	// arranging the 2d array in the lower diagonal--------------------------------------------------------------------------------
 	 
-	  for(j= 0; j<rows-5 ;j++)
-	  { 
-		  System.out.println("*******************************************");
-		  for(i=0; i<rows-5 ;i++)
+	 // System.out.println(save[5][0]);
+	  
+	  
+	  double temp;
+	 
+	  for(i=0 ; i < 1 ; i++)
+	  {
+		  for(j=0 ; j<13 ; j++)
 		  {
-			 System.out.println(save[i][j]);
-			
+			  if(save[j][i] == 0)
+			  {
+				
+				  count = j;
+				  while(count > 0)
+				  {
+					  temp = save[count][i];
+					  save[j-1][i] = save [j][i];
+					  save[j][i] = temp;
+					  
+					  count--;
+					  
+				  }
+				  
+			  }
+			  else
+			  {
+				continue;
+			  }
 		  }
-		  
+	  }
+	  
+	  for(i=0 ; i < 1 ; i++)
+	  {
+		  for(j=0 ; j<13 ; j++)
+		  {
+			System.out.println(save[j][i]);
+		  }
 	  }
 		
 	reader.close();
