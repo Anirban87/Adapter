@@ -19,7 +19,7 @@ public class test
 		 java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
 		java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
 		
-		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -27,7 +27,7 @@ public class test
 		
 	
 		boolean header = true;
-		int lineCount = countLine.countLines("C:/Users/AM0C70368/python_projects/CSV/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv");
+		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv");
 	    Double[][] data = new Double[lineCount][200];
         
     	int i = 0;
