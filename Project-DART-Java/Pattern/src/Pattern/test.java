@@ -16,8 +16,8 @@ public class test
 	public static void main(String[] args) throws IOException
 	{
 		
-		 java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
-		java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
+		// java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
+		//java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
 		
 		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
 		String line = null;
@@ -152,7 +152,7 @@ public class test
 		  
 	  			rec=obj.corr(subarr1, subarr2);
 	  			save[x][y]=rec;
-	 			x++;
+	  			x++;
 	  			iter = iter + 1;
 	  			start++;
 	  			end++;
@@ -169,45 +169,57 @@ public class test
 	  
 	// arranging the 2d array in the lower diagonal--------------------------------------------------------------------------------
 	 
-	 
+	  //System.out.println(save[5][0]);
+	  int temp_count =0;
 	  double temp;
 	 
 	  for(i=0 ; i < 13 ; i++)
 	  {
-		  System.out.println("  ");
-
-		  for(j=0 ; j<13 ; j++)
-		  {
-			  
-			 /* if(save[j][i] == 0)
-			  {
-				
-				  count = j;
-				  while(count > 0)
-				  {
-					  temp = save[count][i];
-					  save[count-1][i] = save [count][i];
-					  save[count][i] = temp;
-					  
-					  count--;
-					  
-				  }
-				  
-			  }
-			  else
-			  {*/
-				System.out.println(save[j][i]);
-			  //}
-		  }
-	  }
-	  
-	 /* for(i=0 ; i < 1 ; i++)
-	  {
+		
 		  for(j=0 ; j<13 ; j++)
 		  {
 			
+			  if(save[j][i] == 0.0)
+			  {
+				  temp_count = j;
+				 
+				  while(temp_count > 0)
+				  {
+					  
+					  temp = save[temp_count-1][i];
+					  save[temp_count-1][i] = save[temp_count][i];
+					  save[temp_count][i] =temp;
+					  temp_count--;
+				  }
+				  
+			  }
+			
+			  else
+			  {
+				continue;
+			  } 
 		  }
-	  }*/
+	  }
+	  
+	 for(i=0 ; i < 13 ; i++)
+	  {
+		 System.out.println("*******************************");
+		  for(j=0 ; j<13 ; j++)
+		  {
+			 if(i==j)
+			 {
+			  System.out.println("1");
+			 }
+			 else if(save[j][i] == 0)
+			 {
+				 continue;
+			 }
+			 else
+			 {
+			  System.out.println(save[j][i]);
+			 }
+		  }
+	  }
 		
 	reader.close();
     scan.close();  
