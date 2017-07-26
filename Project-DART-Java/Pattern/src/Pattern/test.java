@@ -19,7 +19,7 @@ public class test
 		// java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
 		//java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
 		
-		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/ROP.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -27,7 +27,7 @@ public class test
 		
 	
 		boolean header = true;
-		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv");
+		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/ROP.csv");
 	    Double[][] data = new Double[lineCount][200];
         
     	int i = 0;
@@ -114,7 +114,7 @@ public class test
  // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
 	  
 	  int x=0,y=0;
-	  double[][] save = new double[rows-5][rows-5];
+	  double[][] save = new double[rows][rows];
 	  double[] subarr1 = new double[5];
 	  double[] subarr2 = new double[5];
 	  Correlation obj = new Correlation();
@@ -173,19 +173,17 @@ public class test
 	  int temp_count =0;
 	  double temp;
 	 
-	  for(i=0 ; i < 13 ; i++)
+	  for(i=0 ; i <1430 ; i++)
 	  {
 		
-		  for(j=0 ; j<13 ; j++)
+		  for(j=0 ; j<1430 ; j++)
 		  {
 			
 			  if(save[j][i] == 0.0)
 			  {
 				  temp_count = j;
-				 
 				  while(temp_count > 0)
 				  {
-					  
 					  temp = save[temp_count-1][i];
 					  save[temp_count-1][i] = save[temp_count][i];
 					  save[temp_count][i] =temp;
@@ -193,7 +191,7 @@ public class test
 				  }
 				  
 			  }
-			
+			  
 			  else
 			  {
 				continue;
@@ -201,23 +199,25 @@ public class test
 		  }
 	  }
 	  
-	 for(i=0 ; i < 13 ; i++)
+	 for(i=0 ; i<1430; i++)
 	  {
 		 System.out.println("*******************************");
-		  for(j=0 ; j<13 ; j++)
+		 
+		  for(j=0 ; j<1430; j++)
 		  {
-			 if(i==j)
-			 {
-			  System.out.println("1");
-			 }
-			 else if(save[j][i] == 0)
-			 {
-				 continue;
-			 }
-			 else
-			 {
+			if(i==j)
+			{
+				System.out.println("1");
+				
+			}
+			else if (save[j][i] == 0.0)
+			{
+				continue;
+			}
+			else
+			{
 			  System.out.println(save[j][i]);
-			 }
+			}
 		  }
 	  }
 		
