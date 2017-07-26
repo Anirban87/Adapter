@@ -1,11 +1,13 @@
 package Pattern;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 
 import au.com.bytecode.opencsv.CSVWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,8 +18,8 @@ public class test
 	public static void main(String[] args) throws IOException
 	{
 		
-		// java.io.File mycsv = new java.io.File("C:/Users/AM0C70368/Desktop/output.csv");
-		//java.io.PrintWriter outfile = new java.io.PrintWriter(mycsv);
+		
+		PrintStream out = new PrintStream(new FileOutputStream("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/src/output.txt"));
 		
 		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/ROP.csv"));
 		String line = null;
@@ -201,14 +203,16 @@ public class test
 	  
 	 for(i=0 ; i<1430; i++)
 	  {
-		 System.out.println("*******************************");
+		 System.out.println(" ");
 		 
 		  for(j=0 ; j<1430; j++)
 		  {
+			 
+			out.println(save[j][i]);
+			System.setOut(out);
 			if(i==j)
 			{
 				System.out.println("1");
-				
 			}
 			else if (save[j][i] == 0.0)
 			{
@@ -223,7 +227,7 @@ public class test
 		
 	reader.close();
     scan.close();  
-    
+    out.close();
 
   }
 }
