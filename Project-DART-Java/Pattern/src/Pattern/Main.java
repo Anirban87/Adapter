@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class test
+public class Main
 {
 
 	public static void main(String[] args) throws IOException
@@ -21,7 +21,7 @@ public class test
 		
 		PrintStream out = new PrintStream(new FileOutputStream("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/src/output.txt"));
 		
-		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/ROP.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -29,7 +29,7 @@ public class test
 		
 	
 		boolean header = true;
-		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/ROP.csv");
+		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
 	    Double[][] data = new Double[lineCount][200];
         
     	int i = 0;
@@ -73,7 +73,7 @@ public class test
 	    // Generate Two Dimensional Array of Data Values from the CSV -- End----------------------------------------------------------------------------------------
 
 		
-        //int sample = 4;
+        int sample = 4;
 	    Scanner scan = new Scanner(System.in);
 	    System.out.println("");
 		System.out.print("Enter how many mneomics are to be selected (Except TIME)  : ");
@@ -82,7 +82,7 @@ public class test
 		int mnemonics[] = new int[n];
 		for (i = 0; i < mnemonics.length; i++)
 		{   
-			//System.out.print("Enter position of mnemonic (e.g "+ sample+ ":"+ mnem_tokens[sample-1]+") : ");
+			 System.out.print("Enter position of mnemonic (e.g "+ sample+ ":"+ mnem_tokens[sample-1]+") : ");
 			mnemonics[i] = scan.nextInt();
 		}
 
@@ -175,10 +175,10 @@ public class test
 	  int temp_count =0;
 	  double temp;
 	 
-	  for(i=0 ; i <1430 ; i++)
+	  for(i=0 ; i <rows ; i++)
 	  {
 		
-		  for(j=0 ; j<1430 ; j++)
+		  for(j=0 ; j<rows ; j++)
 		  {
 			
 			  if(save[j][i] == 0.0)
@@ -201,27 +201,32 @@ public class test
 		  }
 	  }
 	  
-	 for(i=0 ; i<1430; i++)
+	 for(i=0 ; i<rows-5; i++)
 	  {
 		 System.out.println(" ");
 		 
-		  for(j=0 ; j<1430; j++)
+		  for(j=0 ; j<rows-5; j++)
 		  {
-			 
+			
 			out.println(save[j][i]);
-			System.setOut(out);
+			System.out()
+			
 			if(i==j)
 			{
 				System.out.println("1");
+				
 			}
-			else if (save[j][i] == 0.0)
+			else if(save[j][i] == 0.0)
 			{
 				continue;
 			}
+			
 			else
 			{
 			  System.out.println(save[j][i]);
+			  
 			}
+			
 		  }
 	  }
 		
