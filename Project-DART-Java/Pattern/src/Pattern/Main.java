@@ -21,7 +21,7 @@ public class Main
 		
 		PrintStream out = new PrintStream(new FileOutputStream("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/src/output.txt"));
 		
-		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv"));
 		String line = null;
 		List<String> lines = new ArrayList<>();
 		int mnemCount =0;
@@ -29,7 +29,7 @@ public class Main
 		
 	
 		boolean header = true;
-		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_TimeLog.csv");
+		int lineCount = countLine.countLines("C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/Well/EGFD_WO_1/EGFD_WO_1_DepthLog.csv");
 	    Double[][] data = new Double[lineCount][200];
         
     	int i = 0;
@@ -112,6 +112,7 @@ public class Main
 	 
 		int rows = arr.length;
 		
+		System.out.println("\nCheck the output file at : C:/Users/AM0C70368/Desktop/Dart-Java/Project-DART-Java/Pattern/src/output.txt");
 
  // Chunking the array into blocks of size 5 each calculating correlation and saving as a 2d array-------------------------------------------------------------
 	  
@@ -175,10 +176,10 @@ public class Main
 	  int temp_count =0;
 	  double temp;
 	 
-	  for(i=0 ; i <rows ; i++)
+	  for(i=0 ; i <rows-5; i++)
 	  {
 		
-		  for(j=0 ; j<rows ; j++)
+		  for(j=0 ; j<rows-5; j++)
 		  {
 			
 			  if(save[j][i] == 0.0)
@@ -207,24 +208,17 @@ public class Main
 		 
 		  for(j=0 ; j<rows-5; j++)
 		  {
-			
-			out.println(save[j][i]);
-			System.out()
-			
+			 
 			if(i==j)
 			{
-				System.out.println("1");
-				
+				 out.println(1);
+				 System.setOut(out);
 			}
-			else if(save[j][i] == 0.0)
-			{
-				continue;
-			}
-			
+		
 			else
 			{
-			  System.out.println(save[j][i]);
-			  
+			  out.println(save[j][i]);
+			  System.setOut(out);
 			}
 			
 		  }
