@@ -2,7 +2,6 @@ package Pattern;
 
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
-
 import au.com.bytecode.opencsv.CSVWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
